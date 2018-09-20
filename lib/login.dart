@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/helpers/session_manager.dart';
 import 'package:hello_world/zone.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -58,6 +59,7 @@ class _LoginState extends State<Login> {
       }
 
       final decoded = json.decode(response.body);
+      // SessionManager.setSession(decoded.access_token);
       
       Navigator.of(context).push(new MaterialPageRoute(
         builder: (BuildContext context) {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/helpers/session_manager.dart';
+import 'package:hello_world/zone.dart';
 import 'login.dart';
 
 void main() => runApp(new MyApp());
@@ -40,7 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _createInspection() {
+  void _createInspection() async {
+    // bool isLogin = await SessionManager.isLogin();
+    bool isLogin = true;
+    
+    if (isLogin) {
+      Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) {
+          return new ZoneList();  
+        }
+      ));
+    }
+
     Navigator.of(context).push(new MaterialPageRoute(
       builder: (BuildContext context) {
         return new Login();  
