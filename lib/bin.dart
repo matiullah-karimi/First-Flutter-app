@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/create_inspection.dart';
 import 'package:hello_world/model/road.dart';
 import 'package:hello_world/model/bin.dart';
 
@@ -25,7 +26,7 @@ class _BinState extends State<BinList> {
                   onTap: () {
                     Navigator.of(context).push(new MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return new Scaffold();
+                        return new InspectionForm();
                       }
                     ));
                   },
