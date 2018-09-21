@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/create_feedback.dart';
 import 'package:hello_world/helpers/session_manager.dart';
 import 'package:hello_world/landing_pages.dart';
 import 'package:hello_world/zone.dart';
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Tanzif',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange
       ),
-      home: MyHomePage(title: 'Tanzif')
+      home: MyHomePage(title: 'Tanzif'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -48,19 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
     bool isLogin = true;
 
     if (isLogin) {
-      Navigator.of(context).push(new MaterialPageRoute(
-        builder: (BuildContext context) {
-          return new ZoneList();  
-        }
-      ));
+      Navigator.of(context)
+          .push(new MaterialPageRoute(builder: (BuildContext context) {
+        return new ZoneList();
+      }));
       return;
     }
 
-    Navigator.of(context).push(new MaterialPageRoute(
-      builder: (BuildContext context) {
-        return new Login();  
-      }
-    ));
+    Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (BuildContext context) {
+      return new Login();
+    }));
   }
 
   @override
@@ -76,19 +76,22 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             new LandingPages(),
             ButtonTheme(
-              minWidth: double.infinity,
-              child: new RaisedButton(
-                onPressed: _createInspection,
-                child: new Text("Create Inspection")
-              )
-            ),
+                minWidth: double.infinity,
+                child: new RaisedButton(
+                    onPressed: _createInspection,
+                    child: new Text("Create Inspection"))),
             ButtonTheme(
-              minWidth: double.infinity,
-              child: new RaisedButton(
-              onPressed: _incrementCounter,
-              child: new Text("Report Misconduct"),
-            )
-            ),
+                minWidth: double.infinity,
+                child: new RaisedButton(
+                  onPressed: _incrementCounter,
+                  child: new Text("Report Misconduct"),
+                )),
+            ButtonTheme(
+                minWidth: double.infinity,
+                child: new RaisedButton(
+                  onPressed: _openFeedback,
+                  child: new Text("Feedback"),
+                )),
             new Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
@@ -102,5 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _openFeedback() {
+     Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (BuildContext context) {
+      return new CreateFeedback();
+    }));
   }
 }
