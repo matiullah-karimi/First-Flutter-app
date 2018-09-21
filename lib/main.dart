@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/helpers/session_manager.dart';
+import 'package:hello_world/landing_pages.dart';
 import 'package:hello_world/zone.dart';
 import 'login.dart';
 
@@ -45,13 +46,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void _createInspection() async {
     // bool isLogin = await SessionManager.isLogin();
     bool isLogin = true;
-    
+
     if (isLogin) {
       Navigator.of(context).push(new MaterialPageRoute(
         builder: (BuildContext context) {
           return new ZoneList();  
         }
       ));
+      return;
     }
 
     Navigator.of(context).push(new MaterialPageRoute(
@@ -67,11 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new Container(
+      body: new SingleChildScrollView(
         padding: EdgeInsets.all(10.0),
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            new LandingPages(),
             ButtonTheme(
               minWidth: double.infinity,
               child: new RaisedButton(
