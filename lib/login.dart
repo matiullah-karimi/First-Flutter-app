@@ -25,13 +25,19 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(labelText: 'Enter your email'),
+                decoration: InputDecoration(
+                  icon: Icon(Icons.person),
+                  labelText: 'Enter your email'
+                ),
                 key: widget.key,
                 controller: email,
               ),
               new TextFormField(
                 key: widget.key,
-                decoration: InputDecoration(labelText: 'Enter your password'),
+                decoration: InputDecoration(
+                  icon: Icon(Icons.panorama),
+                  labelText: 'Enter your password'
+                ),
                 controller: password,
               ),
               Container(
@@ -52,14 +58,14 @@ class _LoginState extends State<Login> {
     };
 
     http
-        .post("http://192.168.43.118:8000/api/auth/login", body: map)
+        .post("http://172.30.10.19:8000/api/auth/login", body: map)
         .then((response) {
       if (response.statusCode == 401) {
         return showMessageDialog("Invalid email or password");
       }
 
       final decoded = json.decode(response.body);
-      // SessionManager.setSession(decoded.access_token);
+      SessionManager.setSession(decoded["access_token"]);
       
       Navigator.of(context).push(new MaterialPageRoute(
         builder: (BuildContext context) {

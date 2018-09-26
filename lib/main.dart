@@ -46,8 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _createInspection() async {
-    // bool isLogin = await SessionManager.isLogin();
-    bool isLogin = true;
+    bool isLogin = await SessionManager.isLogin();
 
     if (isLogin) {
       Navigator.of(context)

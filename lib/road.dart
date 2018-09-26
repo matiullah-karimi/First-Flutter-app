@@ -34,9 +34,9 @@ class _RoadState extends State<RoadList> {
               );
             }).toList());
           } else if (snapshot.hasError) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           } else {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
         });
   }

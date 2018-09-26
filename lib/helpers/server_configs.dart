@@ -1,10 +1,7 @@
 class ServerConfigs {
-
-  ServerConfigs() {
-
-  }
-
+  static String serverUrl = "http://172.30.10.19:8000";
+  
   static String getServerUrl() {
-    return "http://192.168.43.118:8000/api";
+    return "http://172.30.10.19:8000/api";
   }
 }

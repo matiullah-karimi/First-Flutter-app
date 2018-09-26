@@ -33,9 +33,9 @@ class _ZoneState extends State<ZoneList> {
               );
             }).toList());
           } else if (snapshot.hasError) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           } else {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
         });
   }

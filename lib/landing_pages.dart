@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/helpers/server_configs.dart';
 import 'package:hello_world/model/landing_page.dart';
 
 class LandingPages extends StatelessWidget {
@@ -22,7 +23,7 @@ class LandingPages extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
                           child: Image.network(
-                            "http://192.168.43.118:8000/storage/" + snapshot.data[index].image,
+                            ServerConfigs.serverUrl + "/storage/" + snapshot.data[index].image,
                             width: 180.0,
                             height: 120.0,
                             fit: BoxFit.cover,

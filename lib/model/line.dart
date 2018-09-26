@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:hello_world/helpers/session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:hello_world/helpers/server_configs.dart';
 
@@ -26,8 +27,9 @@ class Line {
   }
 
   static Future<List<Line>> list (int districtId) async {
+    final token = await SessionManager.getToken();
     final response = await http.get(ServerConfigs.getServerUrl() + "/districts/" + districtId.toString() + "/lines",
-     headers: {HttpHeaders.authorizationHeader: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjQzLjExODo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTM3NDIwNDIyLCJleHAiOjE1Mzc2MzY0MjIsIm5iZiI6MTUzNzQyMDQyMiwianRpIjoid3lDVzJ3TVVGN3o2OVlrUCIsInN1YiI6MiwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.-A2vJX_98VKgqWFxFAbW4NgbeyDHs7a5fs-rxdYUDww"});
+     headers: {HttpHeaders.authorizationHeader: "Bearer " + token});
 
     if (response.statusCode != 200) {
       throw Exception("Failed to load");

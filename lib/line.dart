@@ -34,9 +34,9 @@ class _LineState extends State<LineList> {
               );
             }).toList());
           } else if (snapshot.hasError) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           } else {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
         });
   }
